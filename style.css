@@ -89,6 +89,37 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.export-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--accent-color), #a29bfe);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(108, 92, 231, 0.4);
+}
+
+.export-btn i {
+    font-size: 1rem;
+}
+
 /* Gallery */
 .gallery-grid {
     display: grid;
@@ -232,7 +263,7 @@ body {
 }
 
 .fab:hover {
-    transform: scale(1.1) rotate(90deg);
+    transform: scale(1.15);
     background: var(--accent-hover);
 }
 
@@ -240,7 +271,6 @@ body {
     .fab {
         right: calc(50% - 270px);
         /* Keep it near the container on large screens */
-        transform: translateX(100%);
     }
 }
 
