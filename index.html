@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Life - 비움의 기록</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="counter-wrapper">
+                <h1 class="counter-title">비운 물건</h1>
+                <div class="counter-display" id="total-count">0</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="gallery-section">
+            <div class="gallery-grid" id="item-gallery">
+                <!-- Items will be injected here via JS -->
+            </div>
+
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fa-solid fa-box-open"></i>
+                <p>아직 비운 물건이 없습니다.<br>첫 번째 비움을 기록해보세요.</p>
+            </div>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="add-btn">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Modal for Adding Item -->
+    <div class="modal-overlay hidden" id="item-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>비움 기록하기</h2>
+                <button class="close-btn" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="add-item-form">
+                <div class="form-group image-upload">
+                    <label for="image-input" class="image-label">
+                        <div class="image-preview" id="image-preview">
+                            <i class="fa-regular fa-image"></i>
+                            <span>사진 업로드</span>
+                        </div>
+                    </label>
+                    <input type="file" id="image-input" accept="image/*">
+                    <button type="button" class="paste-btn" id="paste-btn">
+                        <i class="fa-solid fa-paste"></i> 클립보드에서 붙여넣기
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="date-input">비운 날짜</label>
+                    <input type="date" id="date-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label>처분 방식</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="disposal-method" value="당근 판매" id="disposal-carrot">
+                            <span>당근 판매</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="disposal-method" value="나눔" id="disposal-share">
+                            <span>나눔</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="disposal-method" value="버림" id="disposal-discard">
+                            <span>버림</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason-input">처분 이유 <span class="char-count" id="char-count">0/50</span></label>
+                    <textarea id="reason-input" rows="3" maxlength="50" placeholder="예: 사용하지 않는 물건, 너무 낡음..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">저장하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
