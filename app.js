@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCountEl = document.getElementById('total-count');
     const emptyState = document.getElementById('empty-state');
     const dateInput = document.getElementById('date-input');
-    const pasteBtn = document.getElementById('paste-btn');
+
     const reasonInput = document.getElementById('reason-input');
     const charCount = document.getElementById('char-count');
     const exportBtn = document.getElementById('export-btn');
@@ -283,36 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Clipboard Paste Handler
-    pasteBtn.addEventListener('click', async () => {
-        try {
-            const clipboardItems = await navigator.clipboard.read();
-            for (const clipboardItem of clipboardItems) {
-                for (const type of clipboardItem.types) {
-                    if (type.startsWith('image/')) {
-                        const blob = await clipboardItem.getType(type);
-                        const file = new File([blob], 'clipboard-image.png', { type: blob.type });
 
-                        // Crop image to 512x512 square
-                        const croppedFile = await cropImageToSquare(file);
-                        currentImageFile = croppedFile;
-
-                        const reader = new FileReader();
-                        reader.onload = (event) => {
-                            imagePreview.innerHTML = `<img src="${event.target.result}" alt="Preview">`;
-                            imagePreview.classList.add('has-image');
-                        };
-                        reader.readAsDataURL(croppedFile);
-                        return;
-                    }
-                }
-            }
-            alert('클립보드에 이미지가 없습니다.');
-        } catch (err) {
-            console.error('클립보드 접근 실패:', err);
-            alert('클립보드에서 이미지를 가져올 수 없습니다.');
-        }
-    });
 
     // Character Counter
     reasonInput.addEventListener('input', () => {
